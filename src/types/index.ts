@@ -38,6 +38,9 @@ export type ReportUpdate = Database['public']['Tables']['reports']['Update']
 
 // Enum-like union types
 export type RiskCategory = 'fire' | 'liability' | 'dependency' | 'equipment' | 'cyber' | 'fleet'
+
+/** Ordered list of all risk categories — single source of truth for iteration */
+export const RISK_CATEGORIES: readonly RiskCategory[] = ['fire', 'liability', 'dependency', 'equipment', 'cyber', 'fleet']
 export type RiskLevel = 'low' | 'moderate' | 'high' | 'critical'
 export type DiagnosticStatus = 'draft' | 'completed' | 'archived'
 export type UserRole = 'broker' | 'underwriter' | 'admin'

@@ -1,7 +1,5 @@
 import type { RiskCategory, RiskLevel } from '../types'
-
-// Risk categories
-type CategoryWeights = Record<RiskCategory, number>
+import type { CategoryWeights } from './proportionality'
 
 // Compute score for a single category (0-100)
 // Takes array of { questionKey, factorScore (0-10), weight (0-1) }
@@ -53,9 +51,9 @@ export function getRiskLevelColor(level: RiskLevel): string {
 // Default weights
 export const DEFAULT_WEIGHTS: CategoryWeights = {
   fire: 0.25,
-  liability: 0.20,
+  liability: 0.25,  // +0.05 ex-fleet → liability (M2 : fleet désactivé, RC Auto séparé LU)
   dependency: 0.20,
   equipment: 0.15,
   cyber: 0.15,
-  fleet: 0.05,
+  fleet: 0.00,      // M2 : fleet désactivé (couvert séparément en RC Auto LU)
 }
